@@ -1,32 +1,45 @@
 # OSINT-X
 
-Modular passive-intelligence console (Python + Go + Shell + JavaScript).
+Consola modular de inteligencia pasiva en cuatro lenguajes: Python, Go, JavaScript y Shell. Nueve módulos aislados que consultan únicamente información pública y objetivos autorizados, con resultados estructurados que alimenta una capa común de reportes.
 
-## Modules
+> Uso responsable: solo dominios e IPs propios o con autorización. Sin exploits, sin logins, sin fuerza bruta.
 
-- 01 DOMAIN
-- 02 PORTSCAN
-- 03 SUBDOMAIN
-- 04 PHONE
-- 05 USERNAME
-- 06 IPINFO
-- 07 EMAIL
-- 08 URL
-- 09 REPORT
-- 00 EXIT
+## Módulos
 
-The project is designed around public information and authorized security testing.
-Each module is isolated so results can be consumed by the report layer without
-mixing implementation responsibilities.
+| Código | Módulo | Contenido |
+|---|---|---|
+| 01 | DOMAIN | DNS, registros MX/TXT/NS, IPs asociadas, WHOIS/RDAP |
+| 02 | PORTSCAN | Puertos TCP, servicios, banners, versiones |
+| 03 | SUBDOMAIN | Enumeración pasiva, transparencia de certificados, DNS, wordlists |
+| 04 | PHONE | Formato, país, operador y metadatos públicos |
+| 05 | USERNAME | Presencia pública en plataformas y enlaces |
+| 06 | IPINFO | ASN, ISP y geolocalización aproximada |
+| 07 | EMAIL | Verificación y metadatos públicos |
+| 08 | URL | Análisis de enlaces |
+| 09 | REPORT | Guarda el último resultado en JSON, TXT o HTML |
+| 00 | EXIT | Salida |
 
-## Implementations (`src/`)
+## Inicio rápido
 
-All four share the same output contract:
-`status / target / data / sources / retrieved_at / errors`.
+```bash
+# Python (solo biblioteca estándar, 3.10+)
+cd src/python
+python cli.py
 
-- `src/python/` — `python src/python/cli.py` (stdlib only)
-- `src/go/` — `cd src/go && go run .` (stdlib only)
-- `src/shell/` — `bash src/shell/osintx.sh` (curl/dig/openssl)
-- `src/js/` — `cd src/js && node cli.mjs` (Node 18+, sin dependencias)
+# Go (1.21+)
+cd src/go
+go run .          # o compilar: go build -o osintx .
 
-Docs por skill siguen en `01-DOMAIN/` … `09-REPORT/*/SKILL.md`.
+# JavaScript (Node 18+, cero dependencias)
+cd src/js
+node cli.mjs
+
+# Shell (Git Bash o Linux)
+cd src/shell
+./osintx.sh                 # menú
+./osintx.sh 01 example.com  # atajo: módulo + objetivo
+```
+
+## Documentación
+
+Manuales en `docs/`: [índice](docs/index.md), arquitectura, uso por lenguaje y referencia de módulos y errores.
