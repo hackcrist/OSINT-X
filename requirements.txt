@@ -1,0 +1,4 @@
+# requirements.txt — OSINT-X core Python
+# Sin dependencias externas: solo biblioteca estándar (urllib, socket, ssl, json, re).
+# Python >= 3.10 recomendado (probado en 3.14).
+# (Intencionalmente vacío: no instalar nada.)

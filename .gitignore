@@ -1,0 +1,10 @@
+# Salidas y cachés (no subir)
+reports/
+**/reports/
+__pycache__/
+*.pyc
+*.exe
+node_modules/
+
+# Archivo privado del autor
+coding_skill.md

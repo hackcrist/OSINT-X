@@ -1,0 +1,46 @@
+OSINT-X
+├── 01 DOMAIN
+│   ├── DNS
+│   ├── WHOIS/RDAP
+│   ├── registros MX/TXT/NS
+│   ├── IPs asociadas
+│   └── información del dominio
+├── 02 PORTSCAN
+│   ├── puertos TCP
+│   ├── servicios detectados
+│   ├── banners
+│   └── versión
+├── 03 SUBDOMAIN
+│   ├── enumeración pasiva
+│   ├── certificados CT
+│   ├── DNS
+│   └── wordlists
+├── 04 PHONE
+│   ├── formato
+│   ├── país
+│   ├── operador cuando exista fuente pública
+│   └── metadatos públicos
+├── 05 USERNAME
+│   ├── búsqueda de presencia pública
+│   ├── múltiples plataformas
+│   └── enlaces encontrados
+├── 06 IPINFO
+│   ├── ASN
+│   ├── ISP
+│   ├── geolocalización aproximada
+│   └── reverse DNS
+├── 07 EMAIL
+│   ├── dominio
+│   ├── MX
+│   ├── registros públicos
+│   └── comprobaciones OSINT permitidas
+├── 08 URL
+│   ├── headers
+│   ├── tecnologías
+│   ├── redirects
+│   └── certificados
+├── 09 REPORT
+│   ├── JSON
+│   ├── TXT
+│   └── HTML
+└── 00 EXIT

@@ -1,0 +1,14 @@
+{
+  "name": "osint-x",
+  "version": "1.0.0",
+  "description": "OSINT-X — modular passive-intelligence console (Node 18+, zero dependencies, public info only).",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "osintx": "node cli.mjs",
+    "start": "node cli.mjs"
+  }
+}
