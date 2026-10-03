@@ -33,3 +33,15 @@ Recorrido de una consulta desde la entrada hasta el reporte, con tiempos y lími
 1. **Fallo parcial:** si una fuente cae, el resultado sale `partial` con el error en `errors`, no se inventa el dato.
 2. **Fuera de línea:** sin internet solo responde lo local (nada, en la práctica: todos los módulos consultan red).
 3. **Reloj:** `retrieved_at` marca la obtención para trazabilidad.
+
+## Evidencia de ejecución
+
+Salida real del módulo 01-DOMAIN contra `example.com` (Python, red con filtro TLS):
+
+```text
+status: partial | fuentes: 7 | errores: 5
+```
+
+El estado `partial` con 5 errores DoH y 7 fuentes demuestra el contrato: el DNS del sistema resolvió mientras el respaldo DoH reportó su falla explícita.
+
+![Flujo de datos](../assets/arquitectura.svg)

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420">
+  <rect width="860" height="420" rx="14" fill="#0a0a14"/>
+  <text x="430" y="36" text-anchor="middle" font-family="Consolas,monospace" font-size="20" font-weight="bold" fill="#e8e8f0">OSINT-X · Flujo de datos</text>
+  <g font-family="Consolas,monospace" font-size="14" text-anchor="middle">
+    <rect x="30" y="70" width="180" height="56" rx="10" fill="#14142b" stroke="#00ffea" stroke-width="2"/>
+    <text x="120" y="93" fill="#00ffea" font-weight="bold">cli.py</text>
+    <text x="120" y="112" fill="#aaaaaa">Python</text>
+    <rect x="240" y="70" width="180" height="56" rx="10" fill="#14142b" stroke="#ff00ff" stroke-width="2"/>
+    <text x="330" y="93" fill="#ff00ff" font-weight="bold">main.go</text>
+    <text x="330" y="112" fill="#aaaaaa">Go</text>
+    <rect x="450" y="70" width="180" height="56" rx="10" fill="#14142b" stroke="#39ff14" stroke-width="2"/>
+    <text x="540" y="93" fill="#39ff14" font-weight="bold">cli.mjs</text>
+    <text x="540" y="112" fill="#aaaaaa">JavaScript</text>
+    <rect x="660" y="70" width="170" height="56" rx="10" fill="#14142b" stroke="#ffe600" stroke-width="2"/>
+    <text x="745" y="93" fill="#ffe600" font-weight="bold">osintx.sh</text>
+    <text x="745" y="112" fill="#aaaaaa">Shell</text>
+    <line x1="430" y1="126" x2="430" y2="150" stroke="#555555" stroke-width="2"/>
+    <rect x="270" y="150" width="320" height="56" rx="10" fill="#14142b" stroke="#e8e8f0" stroke-width="2"/>
+    <text x="430" y="173" fill="#ffffff" font-weight="bold">Fuentes públicas</text>
+    <text x="430" y="192" fill="#aaaaaa">DNS · RDAP · APIs · sockets</text>
+    <line x1="430" y1="206" x2="430" y2="230" stroke="#555555" stroke-width="2"/>
+    <rect x="270" y="230" width="320" height="56" rx="10" fill="#14142b" stroke="#e8e8f0" stroke-width="2"/>
+    <text x="430" y="253" fill="#ffffff" font-weight="bold">Normalización</text>
+    <text x="430" y="272" fill="#aaaaaa">status · target · sources · errors</text>
+    <line x1="430" y1="286" x2="430" y2="310" stroke="#555555" stroke-width="2"/>
+    <rect x="270" y="310" width="320" height="56" rx="10" fill="#14142b" stroke="#b026ff" stroke-width="2"/>
+    <text x="430" y="333" fill="#b026ff" font-weight="bold">REPORT · JSON TXT HTML</text>
+    <text x="430" y="352" fill="#aaaaaa">09 guarda el último resultado</text>
+  </g>
+</svg>

@@ -23,3 +23,5 @@ Entrada (dominio/IP/usuario/teléfono/URL)
 ```
 
 Cada módulo aísla su responsabilidad y devuelve errores explícitos por consulta fallida en vez de resultados inventados. El estado global es `ok` con datos completos, `partial` con datos incompletos y `error` sin datos.
+
+![Flujo de datos](../assets/arquitectura.svg)
