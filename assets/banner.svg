@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060913"/>
+      <stop offset="45%" stop-color="#0a1020"/>
+      <stop offset="100%" stop-color="#05070d"/>
+    </linearGradient>
+
+    <!-- Neon Cyan Gradient -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#00ff9d"/>
+    </linearGradient>
+
+    <!-- Emerald Glow Gradient -->
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff9d"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+
+    <!-- Glass Panel Fill -->
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur1"/>
+      <feGaussianBlur stdDeviation="6" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.45"/>
+      <circle cx="40" cy="40" r="1" fill="#00f0ff" fill-opacity="0.25"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#grid)"/>
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="200" cy="140" r="180" fill="#00f0ff" fill-opacity="0.08" filter="url(#intenseGlow)"/>
+  <circle cx="1020" cy="340" r="220" fill="#00ff9d" fill-opacity="0.06" filter="url(#intenseGlow)"/>
+  <circle cx="600" cy="240" r="260" fill="#0284c7" fill-opacity="0.05" filter="url(#intenseGlow)"/>
+
+  <!-- Tactical Radar Rings (Center Background) -->
+  <g opacity="0.35" transform="translate(600, 240)">
+    <circle r="210" fill="none" stroke="#00f0ff" stroke-width="0.75" stroke-dasharray="4 8"/>
+    <circle r="160" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="12 6"/>
+    <circle r="110" fill="none" stroke="#00ff9d" stroke-width="0.5"/>
+    <circle r="50"  fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.6"/>
+    <!-- Crosshairs -->
+    <line x1="-240" y1="0" x2="240" y2="0" stroke="#00f0ff" stroke-width="0.75" stroke-opacity="0.4"/>
+    <line x1="0" y1="-220" x2="0" y2="220" stroke="#00f0ff" stroke-width="0.75" stroke-opacity="0.4"/>
+    <!-- Radar Sweep Ray -->
+    <line x1="0" y1="0" x2="160" y2="-130" stroke="#00ff9d" stroke-width="2" filter="url(#glow)"/>
+    <polygon points="0,0 160,-130 180,-80" fill="#00ff9d" fill-opacity="0.08"/>
+  </g>
+
+  <!-- Technical Corner Brackets -->
+  <g stroke="#00f0ff" stroke-width="2" fill="none" opacity="0.75">
+    <path d="M 28 48 L 28 28 L 48 28"/>
+    <path d="M 1172 48 L 1172 28 L 1152 28"/>
+    <path d="M 28 432 L 28 452 L 48 452"/>
+    <path d="M 1172 432 L 1172 452 L 1152 452"/>
+  </g>
+
+  <!-- Top System Header Bar -->
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="11" letter-spacing="2" fill="#7dd3fc" opacity="0.8">
+    <text x="56" y="44">SYSTEM // OSINT-X.CORE.ACTIVE</text>
+    <text x="600" y="44" text-anchor="middle">PROTOCOL: PASSIVE RECONNAISSANCE ONLY</text>
+    <text x="1144" y="44" text-anchor="end">STATUS: OPERATIONAL [100%]</text>
+  </g>
+  <line x1="48" y1="56" x2="1152" y2="56" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Main Hero Title Badge -->
+  <g transform="translate(600, 115)">
+    <rect x="-110" y="-14" width="220" height="28" rx="14" fill="#0c1a2e" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="-85" cy="0" r="4" fill="#00ff9d" filter="url(#glow)"/>
+    <text x="-70" y="4" font-family="monospace, sans-serif" font-size="11" font-weight="700" fill="#00ff9d" letter-spacing="2">PASSIVE INTELLIGENCE</text>
+  </g>
+
+  <!-- HERO LOGO: OSINT-X -->
+  <g transform="translate(600, 215)" text-anchor="middle">
+    <!-- Drop Shadow Layer -->
+    <text x="0" y="2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="88" font-weight="900" fill="#00f0ff" opacity="0.35" filter="url(#intenseGlow)" letter-spacing="8">OSINT-X</text>
+    <!-- Foreground Text -->
+    <text x="0" y="0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="88" font-weight="900" fill="url(#cyanGrad)" letter-spacing="8" filter="url(#glow)">OSINT-X</text>
+  </g>
+
+  <!-- Subtitle Tagline -->
+  <g transform="translate(600, 272)" text-anchor="middle">
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#e2e8f0" letter-spacing="5">
+      MODULAR OPEN-SOURCE INTELLIGENCE FRAMEWORK
+    </text>
+    <text y="24" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8" letter-spacing="3">
+      ZERO EXTERNAL DEPENDENCIES • PURE STANDARD LIBRARIES • ETHICAL OSINT
+    </text>
+  </g>
+
+  <!-- Language Pills Container -->
+  <g transform="translate(600, 345)">
+    <!-- Python -->
+    <g transform="translate(-240, 0)">
+      <rect x="-55" y="-15" width="110" height="30" rx="15" fill="url(#glassGrad)" stroke="#38bdf8" stroke-width="1"/>
+      <circle cx="-35" cy="0" r="4" fill="#38bdf8"/>
+      <text x="-22" y="4" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Python 3</text>
+    </g>
+    <!-- Go -->
+    <g transform="translate(-80, 0)">
+      <rect x="-45" y="-15" width="90" height="30" rx="15" fill="url(#glassGrad)" stroke="#00f0ff" stroke-width="1"/>
+      <circle cx="-28" cy="0" r="4" fill="#00f0ff"/>
+      <text x="-16" y="4" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Go</text>
+    </g>
+    <!-- Node.js -->
+    <g transform="translate(80, 0)">
+      <rect x="-55" y="-15" width="110" height="30" rx="15" fill="url(#glassGrad)" stroke="#00ff9d" stroke-width="1"/>
+      <circle cx="-35" cy="0" r="4" fill="#00ff9d"/>
+      <text x="-22" y="4" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Node.js</text>
+    </g>
+    <!-- Shell/Bash -->
+    <g transform="translate(240, 0)">
+      <rect x="-55" y="-15" width="110" height="30" rx="15" fill="url(#glassGrad)" stroke="#f59e0b" stroke-width="1"/>
+      <circle cx="-35" cy="0" r="4" fill="#f59e0b"/>
+      <text x="-22" y="4" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Bash / sh</text>
+    </g>
+  </g>
+
+  <!-- Bottom Modules Pipeline Display -->
+  <line x1="48" y1="395" x2="1152" y2="395" stroke="#1e293b" stroke-width="1"/>
+  <g transform="translate(600, 428)" text-anchor="middle" font-family="monospace, sans-serif" font-size="11" fill="#64748b" letter-spacing="1">
+    <text>
+      <tspan fill="#00f0ff" font-weight="bold">01</tspan> DOMAIN  │  
+      <tspan fill="#00f0ff" font-weight="bold">02</tspan> PORTSCAN  │  
+      <tspan fill="#00f0ff" font-weight="bold">03</tspan> SUBDOMAIN  │  
+      <tspan fill="#00f0ff" font-weight="bold">04</tspan> PHONE  │  
+      <tspan fill="#00f0ff" font-weight="bold">05</tspan> USERNAME  │  
+      <tspan fill="#00f0ff" font-weight="bold">06</tspan> IPINFO  │  
+      <tspan fill="#00f0ff" font-weight="bold">07</tspan> EMAIL  │  
+      <tspan fill="#00f0ff" font-weight="bold">08</tspan> URL  │  
+      <tspan fill="#00ff9d" font-weight="bold">09</tspan> REPORT
+    </text>
+  </g>
+</svg>

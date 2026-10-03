@@ -45,7 +45,7 @@ Entrada `osintx.sh` (menú y atajo `módulo objetivo`), librería `lib/common.sh
 
 1. **Timeouts:** toda red lleva tiempo límite; un origen lento no bloquea el resto.
 2. **Sin dependencias externas:** las cuatro implementaciones usan lo estándar de cada lenguaje.
-3. **Sin variables de entorno:** no se encontró configuración por entorno en el código revisado.
+3. **Variables de entorno:** solo Shell las usa (`OSINTX_TIMEOUT`, `OSINTX_UA`, `OSINTX_VERSION`); ver [Configuración](../03-Referencia/configuracion.md).
 4. **Sin suite de tests:** no existe carpeta de pruebas en el repositorio.
 
 ---

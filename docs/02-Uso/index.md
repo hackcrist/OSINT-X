@@ -7,6 +7,7 @@ Operación diaria de la consola en sus cuatro implementaciones.
 ## Módulos y Especificaciones
 
 * **[Instalación](instalacion.md):** requisitos y arranque por lenguaje.
+* **[CLI por lenguaje](cli.md):** comandos, atajos y códigos de salida.
 
 ---
 

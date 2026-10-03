@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="OSINT-X Banner" width="100%">
+</p>
+
 # OSINT-X
 
 Consola modular de inteligencia pasiva en cuatro lenguajes: Python, Go, JavaScript y Shell. Nueve módulos aislados que consultan únicamente información pública y objetivos autorizados, con resultados estructurados que alimenta una capa común de reportes.

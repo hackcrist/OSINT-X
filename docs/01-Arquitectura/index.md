@@ -7,6 +7,8 @@ Capas del sistema, flujo de datos y ciclo de vida de una consulta en las cuatro 
 ## Módulos y Especificaciones
 
 * **[Componentes](componentes.md):** archivos fuente y símbolos por lenguaje.
+* **[Flujo de datos](flujo_datos.md):** recorrido, tiempos y límites.
+* **[Seguridad](seguridad.md):** controles y límites del sistema.
 
 ---
 

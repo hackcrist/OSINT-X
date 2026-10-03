@@ -7,6 +7,7 @@ Contratos de módulos, diagnóstico y reporte en un solo lugar.
 ## Módulos y Especificaciones
 
 * **[Módulos](modulos.md):** contrato de cada módulo 01-09.
+* **[Configuración](configuracion.md):** variables de entorno y valores reales.
 * **[Errores](errores.md):** fallos conocidos y resolución.
 
 ---
