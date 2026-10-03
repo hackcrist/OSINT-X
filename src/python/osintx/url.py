@@ -66,11 +66,10 @@ def _tech(headers: dict, html: str) -> list[str]:
     blob = f"{server} {powered} {gen} {html[:20000]}".lower()
     rules = [("wordpress", "wp-content"), ("drupal", "drupal"), ("joomla", "joomla"),
              ("next.js", "__next_data__"), ("react", "react"), ("nginx", "nginx"),
-             ("apache", "apache"), ("cloudflare", "cloudflare"), ("php", "x-powered-by: php"),
+             ("apache", "apache"), ("cloudflare", "cloudflare"), ("php", "php"),
              ("django", "csrftoken"), ("shopify", "shopify")]
-    text = f"{server} {powered} {gen}".lower() + "\n" + blob
     for label, sig in rules:
-        if sig in text and label not in found:
+        if (sig in blob or (label == "php" and "php" in powered.lower())) and label not in found:
             found.append(label)
     if gen and gen not in found:
         found.append(f"generator:{gen[:80]}")

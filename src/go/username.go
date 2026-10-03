@@ -108,7 +108,7 @@ func checkProfile(name, url string) UsernameFinding {
 		}
 	}
 	// Algunos servidores rechazan HEAD pero sirven GET.
-	if (code == http.StatusForbidden || code == http.StatusMethodNotAllowed) && true {
+	if code == http.StatusForbidden || code == http.StatusMethodNotAllowed {
 		if gcode, gerr := getStatus(url); gerr == nil {
 			code = gcode
 		}

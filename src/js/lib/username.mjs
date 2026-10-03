@@ -28,7 +28,7 @@ async function probe(platform, username) {
     if (head.status === 200) return { platform: platform.id, profile_url: profileUrl, presence: "found", http_status: 200, observed_via: "HEAD" };
     if (head.status === 404) return { platform: platform.id, profile_url: profileUrl, presence: "not-found", http_status: 404, observed_via: "HEAD" };
     if (![403, 405, 501].includes(head.status)) {
-      return { platform: platform.id, profile_url: profileUrl, presence: head.status === 200 ? "found" : "unknown", http_status: head.status, observed_via: "HEAD" };
+      return { platform: platform.id, profile_url: profileUrl, presence: "unknown", http_status: head.status, observed_via: "HEAD" };
     }
     // Servers that reject HEAD: one GET to disambiguate.
     const get = await httpGet(profileUrl, { timeoutMs: PER_REQUEST_TIMEOUT });
@@ -64,7 +64,7 @@ export async function checkUsername(raw) {
       unknown: results.filter((r) => r.presence === "unknown"),
       note: "Presence means 'HTTP 200 on the public profile URL' — not identity verification. Some sites block bots; those stay 'unknown'.",
     },
-    sources: results.map((r) => `https:${r.platform}`),
+    sources: results.map((r) => r.profile_url),
     errors,
   });
 }

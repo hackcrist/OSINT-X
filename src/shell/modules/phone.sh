@@ -39,7 +39,10 @@ country_by_prefix() {
     213) printf 'Argelia' ;; 233) printf 'Ghana' ;;
     234) printf 'Nigeria' ;; 351) printf 'Portugal' ;;
     352) printf 'Luxemburgo' ;; 353) printf 'Irlanda' ;;
-    507) printf 'Panama' ;; 509) printf 'Haiti' ;;
+    502) printf 'Guatemala' ;; 503) printf 'El Salvador' ;;
+    504) printf 'Honduras' ;; 505) printf 'Nicaragua' ;;
+    506) printf 'Costa Rica' ;; 507) printf 'Panama' ;;
+    509) printf 'Haiti' ;;
     591) printf 'Bolivia' ;; 593) printf 'Ecuador' ;;
     595) printf 'Paraguay' ;; 598) printf 'Uruguay' ;;
     *) printf 'Desconocido / no catalogado (aproximado)' ;;

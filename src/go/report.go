@@ -28,8 +28,8 @@ func SaveReport(r Result, format, path string) error {
 	}
 	dir := filepath.Dir(path)
 	if dir != "." && dir != "" {
-		if st, err := os.Stat(dir); err != nil || !st.IsDir() {
-			return fmt.Errorf("report: directorio inexistente: %s", dir)
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			return fmt.Errorf("report: no se pudo crear directorio %s: %w", dir, err)
 		}
 	}
 	var (

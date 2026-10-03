@@ -236,5 +236,5 @@ doh_lookup() {
   curl -sS -m "${OSINTX_TIMEOUT}" -A "${OSINTX_UA}" \
     -H 'accept: application/dns-json' \
     --proto '=https' \
-    "https://cloudflare-dns.com/dns-json?name=${domain}&type=${rtype}" 2>&1
+    "https://cloudflare-dns.com/dns-query?name=${domain}&type=${rtype}" 2>&1
 }

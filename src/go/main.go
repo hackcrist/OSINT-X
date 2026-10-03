@@ -32,6 +32,10 @@ func main() {
 			return
 		}
 		opt := strings.TrimSpace(in.Text())
+		// Normalizar: "1" -> "01" (igual que Shell y JS).
+		if len(opt) == 1 && opt[0] >= '0' && opt[0] <= '9' {
+			opt = "0" + opt
+		}
 		switch opt {
 		case "00", "0", "exit", "quit", "q":
 			fmt.Println("OSINT-X: fin de sesión.")

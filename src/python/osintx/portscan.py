@@ -6,6 +6,7 @@ vs inferencia (servicio probable por puerto).
 """
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
 import socket
 
 from .common import make_result
@@ -90,9 +91,15 @@ def scan(host: str, ports: list[int] | None = None, timeout: float = 2.0) -> dic
         if not 1 <= p <= 65535:
             return make_result(host, {}, [], [f"puerto fuera de rango: {p}"], "error")
 
-    results = [_probe(ip, p, timeout) for p in sorted(set(plist))]
-    sources = [f"tcp-connect://{ip}:{r['port']} (observado) "
-               f"timeout={timeout}s" for r in results]
+    unique_ports = sorted(set(plist))
+    # Sondeo concurrente seguro (stdlib ThreadPoolExecutor)
+    max_workers = min(15, len(unique_ports) or 1)
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = {pool.submit(_probe, ip, p, timeout): p for p in unique_ports}
+        probed_map = {futures[f]: f.result() for f in futures}
+
+    results = [probed_map[p] for p in unique_ports]
+    sources = [f"tcp-connect://{ip}:{r['port']} (observado) timeout={timeout}s" for r in results]
     n_open = sum(1 for r in results if r["status_observed"] == "open")
     data = {"host_observed": target, "resolved_ip_observed": ip,
             "open_count_observed": n_open, "ports": results,

@@ -120,6 +120,7 @@ run_portscan() {
     set +u
     tcp_probe "$host" "$port" "$ptimeout"
     rc=$?
+    set -u
     if (( rc == 0 )); then
       banner="$(grab_banner "$host" "$port" "$ptimeout" 2>/dev/null)"
       banner="$(printf '%s' "$banner" | tr '\r\n' ' ' | head -c 120)"

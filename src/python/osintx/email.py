@@ -26,6 +26,17 @@ def lookup(email: str) -> dict:
     mx_records = mx["answers"] if mx["ok"] else []
     if not mx["ok"]:
         errors.append(f"DoH MX: {mx['error']}")
+
+    txt = doh_query(domain, "TXT")
+    sources.append(txt["source"])
+    txt_records = txt["answers"] if txt["ok"] else []
+    spf_record = next((t for t in txt_records if "v=spf1" in t.lower()), "")
+
+    dmarc = doh_query(f"_dmarc.{domain}", "TXT")
+    sources.append(dmarc["source"])
+    dmarc_records = dmarc["answers"] if dmarc["ok"] else []
+    dmarc_record = next((t for t in dmarc_records if "v=dmarc1" in t.lower()), "")
+
     try:
         old = socket.getdefaulttimeout()
         socket.setdefaulttimeout(10)
@@ -38,9 +49,12 @@ def lookup(email: str) -> dict:
     except Exception as ex:
         domain_ips = []
         errors.append(f"getaddrinfo({domain}): {type(ex).__name__}: {ex}")
+
     data = {"input_observed": e, "valid_format_observed": True,
             "local_part_observed": local, "domain_observed": domain,
             "mx_observed": mx_records, "domain_ips_observed": domain_ips,
+            "spf_observed": spf_record or "no publicado",
+            "dmarc_observed": dmarc_record or "no publicado",
             "deliverability_inferred": ("MX publicado (recepción probable)"
                                         if mx_records else "sin MX observado (recepción improbable)"),
             "note": "No se verifica existencia del buzón; solo registros públicos del dominio."}

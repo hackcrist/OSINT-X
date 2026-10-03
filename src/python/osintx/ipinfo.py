@@ -17,33 +17,36 @@ def lookup(ip: str) -> dict:
     sources: list[str] = []
     target = (ip or "").strip()
     try:
-        ipaddress.ip_address(target)
+        ip_obj = ipaddress.ip_address(target)
     except Exception:
         return make_result(ip, {"input_observed": ip}, [],
                            [f"IP inválida: {ip!r}"], "error")
 
-    api_url = (f"http://ip-api.com/json/{urllib.parse.quote(target)}"
-               "?fields=status,message,country,regionName,city,isp,org,as,query")
-    sources.append(api_url)
-    r = http_get(api_url, timeout=10, accept="application/json")
     geo: dict = {}
-    if r["ok"]:
-        try:
-            p = json.loads(r["body"] or "{}")
-            if p.get("status") == "success":
-                geo = {"country_observed": p.get("country", ""),
-                       "region_observed": p.get("regionName", ""),
-                       "city_observed": p.get("city", ""),
-                       "isp_observed": p.get("isp", ""),
-                       "org_observed": p.get("org", ""),
-                       "asn_observed": p.get("as", ""),
-                       "query_observed": p.get("query", "")}
-            else:
-                errors.append(f"ip-api: {p.get('message', 'fail')}")
-        except Exception as e:
-            errors.append(f"ip-api JSON inválido: {e}")
+    if not ip_obj.is_global:
+        errors.append(f"IP no pública ({target}): consulta remota omitida; solo reverse DNS")
     else:
-        errors.append(f"ip-api: {r['error']}")
+        api_url = (f"http://ip-api.com/json/{urllib.parse.quote(target)}"
+                   "?fields=status,message,country,regionName,city,isp,org,as,query")
+        sources.append(api_url)
+        r = http_get(api_url, timeout=10, accept="application/json")
+        if r["ok"]:
+            try:
+                p = json.loads(r["body"] or "{}")
+                if p.get("status") == "success":
+                    geo = {"country_observed": p.get("country", ""),
+                           "region_observed": p.get("regionName", ""),
+                           "city_observed": p.get("city", ""),
+                           "isp_observed": p.get("isp", ""),
+                           "org_observed": p.get("org", ""),
+                           "asn_observed": p.get("as", ""),
+                           "query_observed": p.get("query", "")}
+                else:
+                    errors.append(f"ip-api: {p.get('message', 'fail')}")
+            except Exception as e:
+                errors.append(f"ip-api JSON inválido: {e}")
+        else:
+            errors.append(f"ip-api: {r['error']}")
 
     try:
         rev, _, _ = socket.gethostbyaddr(target)

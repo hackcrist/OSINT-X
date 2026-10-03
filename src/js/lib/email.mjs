@@ -35,9 +35,8 @@ export async function investigateEmail(raw) {
   const [local, domain] = input.split("@");
 
   const resolver = new dns.Resolver({ timeout: 8000, tries: 2 });
-  const [mx, txt, spfDomain, dmarc] = await Promise.all([
+  const [mx, txt, dmarc] = await Promise.all([
     tryResolve(resolver, "MX", domain, errors),
-    tryResolve(resolver, "TXT", domain, errors),
     tryResolve(resolver, "TXT", domain, errors),
     tryResolve(resolver, "TXT", `_dmarc.${domain}`, errors),
   ]);
@@ -55,7 +54,6 @@ export async function investigateEmail(raw) {
     mail_server_present: mx ? mx.length > 0 : null,
     spf: { present: hasSpf, observed_txt: txt ?? null },
     dmarc: { present: /v=DMARC1/i.test(dmarcFlat), observed_txt: dmarc },
-    _spf_domain_raw: spfDomain,
     note: "DNS-only OSINT. Deliverability/inbox existence is NOT tested (that would be an active probe).",
   };
 

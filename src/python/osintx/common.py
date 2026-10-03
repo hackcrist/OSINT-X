@@ -125,6 +125,8 @@ DOMAIN_RE = re.compile(r"^(?=.{1,253}$)(?!-)[a-z0-9-]{1,63}(?<!-)(\.[a-z0-9-]{1,
 def validate_domain(value: str) -> str:
     """Normaliza y valida dominio. Lanza ValueError si inválido."""
     v = (value or "").strip().lower().rstrip(".")
+    # Quitar esquema si fue introducido (ej. https://example.com/ -> example.com)
+    v = re.sub(r"^[a-z]+://", "", v).split("/")[0].split("?")[0].split("#")[0].split(":")[0].rstrip(".")
     if not v or len(v) > 253 or not DOMAIN_RE.match(v):
         raise ValueError(f"dominio inválido: {value!r}")
     return v
